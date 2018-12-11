@@ -1,0 +1,124 @@
+1. データベースへ接続
+
+```bash
+$ mysql -u root
+```
+
+
+2. データベース作成
+
+```sql
+mysql>create database
+```
+
+
+3. データベースの選択
+
+```sql
+mysql>
+```
+
+
+4-1. itemsテーブルの作成
+
+```sql
+mysql> 
+```
+
+
+4-2. itemsテーブルの構造を確認
+
+```sql
+mysql>
+```
+
+
+4-3. categoriesテーブルの作成
+
+```sql
+mysql>
+```
+
+
+4-4. categoriesテーブルの構造を確認
+
+```sql
+mysql>
+```
+
+
+5-1. 条件: price
+
+```sql
+mysql>
+```
+
+
+5-2. 抽出項目: name、price
+
+```sql
+mysql>
+```
+
+
+5-3. 並び替え: price
+
+```sql
+mysql>
+```
+
+
+5-4. 平均: price
+
+```sql
+mysql>
+```
+
+
+5-5. あいまい検索
+
+```sql
+mysql>
+```
+
+
+5-6. 結合
+
+```sql
+mysql>
+```
+
+
+6-1. 価格
+
+```sql
+mysql>
+```
+
+
+7-1. 価格
+
+```sql
+mysql>
+```
+
+
+8-1. items
+
+```sql
+mysql>
+```
+
+
+8-2. categories
+
+```sql
+mysql>
+```
+
+
+9. データベースの削除
+
+```sql
+mysql>
+```
