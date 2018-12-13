@@ -8,117 +8,159 @@ $ mysql -u root
 2. データベース作成
 
 ```sql
-mysql>create database
+mysql>create database ruby_camp;
 ```
 
 
 3. データベースの選択
 
 ```sql
-mysql>
+mysql>use ruby_camp
 ```
 
 
 4-1. itemsテーブルの作成
 
 ```sql
-mysql> 
+mysql>create table items (id int NOT NULL AUTO_INCREMENT,
+    -> name varchar(31) NOT NULL,
+    -> price int NOT NULL,
+    -> category_id int NOT NULL,
+    -> description varchar(1002) NOT NULL,
+    -> PRIMARY KEY (id),
+    -> INDEX category_id_index(category_id)
+    -> );
 ```
 
 
 4-2. itemsテーブルの構造を確認
 
 ```sql
-mysql>
+mysql>desc iterms;
 ```
 
 
 4-3. categoriesテーブルの作成
 
 ```sql
-mysql>
+mysql>create table categories (id int NOT NULL AUTO_INCREMENT,
+    -> name varchar(255) NOT NULL,
+    -> PRIMARY KEY (id)
+    -> );
 ```
 
 
 4-4. categoriesテーブルの構造を確認
 
 ```sql
-mysql>
+mysql>desc categories;
 ```
 
 
 5-1. 条件: price
 
 ```sql
-mysql>
+mysql>select * from items where price <= 7300;
++----+-----------------------------------------------------+-------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| id | name                                                | price | category_id | description                                                                                                                                                                                      |
++----+-----------------------------------------------------+-------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|  1 | 簡単に折りたためるラック                            |  3000 |           1 | リビング、寝室、キッチンなどの小物置きに、または窓際に置いて花台にするなど、家中でフレキシブルに使える折りたたみ式ラック。                                                                       |
+|  2 | ミニチェスト                                        |  4400 |           1 | デスクまわりはもちろん玄関やリビングにも合わせやすいシンプルなデザイン。                                                                                                                         |
+|  4 | リボンアルル オードトワレ ７５ｍｌ                  |  7300 |           2 | つけた瞬間は甘酸っぱくて華やか、そしてちょっぴりスパイシーなノートへと展開。                                                                                                                     |
+|  6 | 銀座ミルフィーユ                                    |  3240 |           3 | 高級フルーツの老舗「銀座千疋屋」がお届けする、上品な味わいの銀座ミルフィーユ。                                                                                                                   |
+|  7 | ウインターギフト                                    |  4200 |           3 | 定番のバームクーヘンに、香ばしいキャラメル風味のバームクーヘンやりんごのマドレーヌなど、バラエティ豊かな焼き菓子を詰合せました。                                                                 |
+|  8 | プレミアムチョコレートセレクション                  |  2980 |           3 | モロゾフの伝統から生まれた一粒一粒がまるで芸術品のようなチョコレートの詰合せ。                                                                                                                   |
++----+-----------------------------------------------------+-------+-------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 
 5-2. 抽出項目: name、price
 
 ```sql
-mysql>
+mysql>select name, price from items;
++-----------------------------------------------------+-------+
+| name                                                | price |
++-----------------------------------------------------+-------+
+| 簡単に折りたためるラック                            |  3000 |
+| ミニチェスト                                        |  4400 |
+| クロエ オー・ド・パルファム                         |  8600 |
+| リボンアルル オードトワレ ７５ｍｌ                  |  7300 |
+| ナイルの庭                                          |  9700 |
+| 銀座ミルフィーユ                                    |  3240 |
+| ウインターギフト                                    |  4200 |
+| プレミアムチョコレートセレクション                  |  2980 |
++-----------------------------------------------------+-------+
 ```
 
 
 5-3. 並び替え: price
 
 ```sql
-mysql>
+mysql>select * from items order by price desc;
 ```
 
 
 5-4. 平均: price
 
 ```sql
-mysql>
+mysql>select avg(price) from items;
 ```
 
 
 5-5. あいまい検索
 
 ```sql
-mysql>
+mysql>select * from items where description like '%詰合せ%';
 ```
 
 
 5-6. 結合
 
 ```sql
-mysql>
+mysql>SELECT c.name,count(i.id) as number_of_items
+    -> FROM categories as c
+    -> LEFT JOIN
+    ->  items as i
+    -> ON
+    ->  c.id = i.category_id
+    -> where
+    ->  i.price >= 7000
+    -> GROUP BY
+    ->  c.name
+    -> ;
 ```
 
 
 6-1. 価格
 
 ```sql
-mysql>
+mysql>update items set price = price + 500 where price >= 7000;
 ```
 
 
 7-1. 価格
 
 ```sql
-mysql>
+mysql>delete from items where price = 4000;
 ```
 
 
 8-1. items
 
 ```sql
-mysql>
+mysql>drop table items;
 ```
 
 
 8-2. categories
 
 ```sql
-mysql>
+mysql>drop table categories;
 ```
 
 
 9. データベースの削除
 
 ```sql
-mysql>
+mysql>drop database ruby_camp
 ```
