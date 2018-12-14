@@ -36,7 +36,7 @@ mysql>create table items (id int NOT NULL AUTO_INCREMENT,
 4-2. itemsテーブルの構造を確認
 
 ```sql
-mysql>desc iterms;
+mysql>desc items;
 ```
 
 
